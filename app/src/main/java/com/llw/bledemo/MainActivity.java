@@ -46,6 +46,8 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class MainActivity extends AppCompatActivity {
 
+    private boolean isScanning= false;
+
 
     private static final String TAG = MainActivity.class.getSimpleName();
     /**
@@ -230,6 +232,10 @@ public class MainActivity extends AppCompatActivity {
      * 开始扫描设备
      */
     public void startScanDevice() {
+        if (isScanning){
+            return;
+        }
+        isScanning = true;
         loadingProgressBar.setVisibility(View.VISIBLE);
         mList.clear();
         deviceAdapter.notifyDataSetChanged();
